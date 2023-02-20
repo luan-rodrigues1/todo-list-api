@@ -7,22 +7,22 @@ class Task {
     id: string
 
     @Column({length: 50})
-    name : string
+    name: string
 
     @Column({length: 10})
-    level_importance: string
+    priority: string
 
     @Column({length: 300, nullable: true})
     description?: string
 
     @Column()
-    category : string
+    category: string
 
     @Column({default: false})
-    status : boolean
+    completed: boolean
 
     @CreateDateColumn()
-    created_at : Date
+    createdAt: Date
 
     @ManyToOne(() => User, user => user.tasks)
     user: User
