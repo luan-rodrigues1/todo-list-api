@@ -9,4 +9,22 @@ export interface IUserResponse {
     id: string
     name: string
     email: string
+    createdAt: Date
+    updatedAt: Date
+    isActive: boolean
+}
+
+export interface IUserUpdate {    
+    name?: string 
+    email?: string 
+    password?: string 
+    isActive?: boolean
+    id?: string
+    createdAt?: Date
+    updatedAt?: Date
+}
+
+export interface IUserLogin {
+    email: string
+    password: string
 }
