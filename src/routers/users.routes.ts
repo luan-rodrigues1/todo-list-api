@@ -1,5 +1,5 @@
 import {Router} from "express"
-import { createdUserController, listAllUsersController, deleteUserController, updateUserController } from "../controllers/users.controllers"
+import { createdUserController, listAllUsersController, deleteUserController, updateUserController, loggedUserInfoController } from "../controllers/users.controllers"
 import ensureAuthMiddleware from "../middlewares/ensureAuth.middleware"
 import ensureDetalsValidMiddleware from "../middlewares/ensureDatalsValid.middleware"
 import ensureExistUserIdMiddleware from "../middlewares/ensureExistUserId.middleware"
@@ -12,5 +12,6 @@ userRoutes.post("", ensureDetalsValidMiddleware(createUserSchema), createdUserCo
 userRoutes.get("", listAllUsersController)
 userRoutes.delete("/:id", ensureAuthMiddleware, ensureExistUserIdMiddleware, deleteUserController)
 userRoutes.patch("/:id", ensureAuthMiddleware, ensureExistUserIdMiddleware, ensureDetalsValidMiddleware(updateUserSchema), updateUserController)
+userRoutes.get("/profile", ensureAuthMiddleware, loggedUserInfoController)
 
 export default userRoutes

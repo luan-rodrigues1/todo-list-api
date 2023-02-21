@@ -1,6 +1,5 @@
 import * as yup from "yup"
-import { Schema } from "yup";
-import { IUserRequest, IUserResponse, IUserUpdate } from "../interfaces/users";
+import { IUserLoggedResponse, IUserRequest, IUserResponse, IUserUpdate } from "../interfaces/users";
 
 const createUserSchema: yup.Schema<IUserRequest> = yup.object().shape({
     name: yup.string().required(),
@@ -9,12 +8,22 @@ const createUserSchema: yup.Schema<IUserRequest> = yup.object().shape({
 })
 
 const userWithoutPasswordSchema: yup.Schema<IUserResponse> =  yup.object().shape({
-    id: yup.string().required(),
-    name: yup.string().required(),
-    email: yup.string().email().required(),
-    createdAt: yup.date().required(),
+    isActive: yup.boolean().required(),
     updatedAt: yup.date().required(),
-    isActive: yup.boolean().required()
+    createdAt: yup.date().required(),
+    email: yup.string().email().required(),
+    name: yup.string().required(),
+    id: yup.string().required()
+})
+
+const LoggedWithoutPasswordSchema: yup.Schema<IUserLoggedResponse> =  yup.object().shape({
+    tasks: yup.array().required(),
+    isActive: yup.boolean().required(),
+    updatedAt: yup.date().required(),
+    createdAt: yup.date().required(),
+    email: yup.string().email().required(),
+    name: yup.string().required(),
+    id: yup.string().required(),
 })
 
 const updateUserSchema: yup.Schema<IUserUpdate | any> = yup.object().shape({
@@ -29,4 +38,4 @@ const updateUserSchema: yup.Schema<IUserUpdate | any> = yup.object().shape({
 
 
 
-export { createUserSchema, userWithoutPasswordSchema, updateUserSchema}
+export { createUserSchema, userWithoutPasswordSchema, updateUserSchema, LoggedWithoutPasswordSchema}
