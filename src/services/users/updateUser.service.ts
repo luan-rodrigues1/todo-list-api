@@ -1,11 +1,10 @@
 import AppDataSource from "../../data-source";
 import { User } from "../../entities/user.entity";
 import { AppError } from "../../errors";
-import { IUserUpdate } from "../../interfaces/users"
+import { IUserResponse, IUserUpdate } from "../../interfaces/users"
 import { userWithoutPasswordSchema } from "../../schemas/user.schemas";
 
-const updateUserService = async (userId: string, payload: IUserUpdate, loggedId: string) => {
-    console.log(payload)
+const updateUserService = async (userId: string, payload: IUserUpdate, loggedId: string): Promise<IUserResponse> => {
     if(userId !== loggedId){
         throw new AppError("missing permissions", 401)
     }
