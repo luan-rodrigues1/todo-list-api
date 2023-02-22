@@ -1,5 +1,5 @@
 import * as yup from "yup"
-import { ITaskCategory, ITaskRequest, ITaskUpdate } from "../interfaces/tasks.ts"
+import { ITaskRequest, ITaskUpdate } from "../interfaces/tasks.ts"
 
 const createTaskSchema: yup.Schema<ITaskRequest | any> = yup.object().shape({
     name: yup.string().required(),
@@ -26,8 +26,6 @@ const updateTaskResponseSchema: yup.Schema<ITaskUpdate | any> = yup.object().sha
     id: yup.string().required()
 })
 
-const TaskCategorySchema: yup.Schema<ITaskCategory> = yup.object().shape({
-    category: yup.string().required()
-})
 
-export {createTaskSchema, updateTaskSchema, updateTaskResponseSchema, TaskCategorySchema}
+
+export {createTaskSchema, updateTaskSchema, updateTaskResponseSchema}

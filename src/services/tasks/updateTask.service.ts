@@ -1,6 +1,5 @@
 import AppDataSource from "../../data-source"
 import { Task } from "../../entities/task.entity"
-import { User } from "../../entities/user.entity"
 import { AppError } from "../../errors"
 import { ITaskUpdate } from "../../interfaces/tasks.ts"
 import { updateTaskResponseSchema } from "../../schemas/task.schemas"

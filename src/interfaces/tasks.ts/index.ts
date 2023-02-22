@@ -22,8 +22,6 @@ export interface ITaskUpdate {
     completed?: boolean
 }
 
-export interface ITaskCategory {
-    category: string
-}
+
 
 
