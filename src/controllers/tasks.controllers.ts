@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { ITaskCategory, ITaskRequest } from "../interfaces/tasks.ts";
+import { ITaskRequest } from "../interfaces/tasks.ts";
 import createTaskService from "../services/tasks/createTask.service";
 import deleteTaskService from "../services/tasks/deleteTask.service";
 import listTasksCategoryService from "../services/tasks/listTasksCategory.service";
@@ -33,7 +33,7 @@ const deleteTaskController = async (req: Request, res: Response) => {
 }
 
 const listTasksCategoryController = async (req: Request, res: Response) => {
-    const category: ITaskCategory = req.body
+    const category: string = req.params.category
     const userId: string = req.user.id 
 
     const list = await listTasksCategoryService(category, userId)
