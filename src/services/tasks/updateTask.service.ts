@@ -7,6 +7,12 @@ import { updateTaskResponseSchema } from "../../schemas/task.schemas"
 const updateTaskService = async (payload: ITaskUpdate, taskId: string, userId: string): Promise<ITaskUpdate> => {
     const taskRepo = AppDataSource.getRepository(Task)
 
+    if(payload.priority){
+        if(payload.priority !== "Alta" && payload.priority !== "Média" && payload.priority !== "Baixa"){
+            throw new AppError("The priority field value is invalid", 401)
+        }
+    }
+
     const searchTask = await taskRepo.findOne({
         where: {
             id: taskId

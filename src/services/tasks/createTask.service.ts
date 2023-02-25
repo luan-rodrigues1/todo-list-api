@@ -1,11 +1,16 @@
 import AppDataSource from "../../data-source"
 import { Task } from "../../entities/task.entity"
 import { User } from "../../entities/user.entity"
+import { AppError } from "../../errors"
 import { ITask, ITaskRequest } from "../../interfaces/tasks.ts"
 
 const createTaskService = async (payload: ITaskRequest, userId: string): Promise<ITask| any> => {
     const taskRepo = AppDataSource.getRepository(Task)
     const userRepo = AppDataSource.getRepository(User)
+
+    if(payload.priority !== "Alta" && payload.priority !== "Média" && payload.priority !== "Baixa"){
+        throw new AppError("The priority field value is invalid", 401)
+    }
 
     const searchUser =  await userRepo.findOne({
         where: {
