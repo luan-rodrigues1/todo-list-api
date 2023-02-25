@@ -14,15 +14,11 @@ const deleteTaskService = async (taskId: string, userId: string) => {
         }
     })
 
-    if(!searchTask){
-        throw new AppError("Task not found", 404)
-    }
-
-    if(searchTask.user.id !== userId){
+    if(searchTask!.user.id !== userId){
         throw new AppError("missing permissions", 401)
     }
 
-    return await taskRepo.delete(searchTask.id)
+    return await taskRepo.delete(searchTask!.id)
 }
 
 export default deleteTaskService
