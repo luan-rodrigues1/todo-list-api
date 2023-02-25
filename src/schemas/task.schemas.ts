@@ -27,5 +27,4 @@ const updateTaskResponseSchema: yup.Schema<ITaskUpdate | any> = yup.object().sha
 })
 
 
-
 export {createTaskSchema, updateTaskSchema, updateTaskResponseSchema}

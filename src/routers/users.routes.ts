@@ -3,7 +3,6 @@ import { createdUserController, listAllUsersController, deleteUserController, up
 import ensureAuthMiddleware from "../middlewares/ensureAuth.middleware"
 import ensureDetalsValidMiddleware from "../middlewares/ensureDatalsValid.middleware"
 import ensureExistUserIdMiddleware from "../middlewares/ensureExistUserId.middleware"
-import { createSessionSchema } from "../schemas/session.schemas"
 import { createUserSchema, updateUserSchema } from "../schemas/user.schemas"
 
 const userRoutes = Router()
