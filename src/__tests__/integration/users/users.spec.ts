@@ -74,7 +74,7 @@ describe("/users", () => {
         expect(response.status).toBe(401)
     })
 
-    test("PATCH /users/:id - should not be possible for a user to update information from another", async () => {
+    test("PATCH /users/:id - Should not be possible for a user to update information from another", async () => {
         await request(app).post("/users").send(mockedUser)
         await request(app).post("/users").send(mockedUser2)
         const userLogged1 = await request(app).post("/login").send(mockedUserLogin1)
