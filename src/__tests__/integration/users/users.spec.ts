@@ -2,7 +2,7 @@ import { DataSource, Repository } from "typeorm"
 import AppDataSource from "../../../data-source"
 import request from "supertest"
 import app from "../../../app"
-import { mockedUser, mockedUser2, mockedUserLogin1, mockedUserLogin2 } from '../../mocks'
+import { mockedUser, mockedUser2, mockedUserLogin1, mockedUserLogin2, mockedUserUpdate } from '../../mocks'
 import { User } from "../../../entities/user.entity"
 
 describe("/users", () => {
@@ -68,9 +68,9 @@ describe("/users", () => {
 
     test("PATCH /users/:id - Should not be able to update user without authentication", async () => {
         const userLogged1 = await request(app).post("/login").send(mockedUserLogin1)
-
         const response = await request(app).patch(`/users/1`).set('Authorization', `Bearer ${userLogged1.body.token}`).send(mockedUser2)
         
+        expect(response.body).toHaveProperty("message")
         expect(response.status).toBe(401)
     })
 
@@ -80,10 +80,21 @@ describe("/users", () => {
         const userLogged1 = await request(app).post("/login").send(mockedUserLogin1)
         const userLogged2 = await request(app).post("/login").send(mockedUserLogin2)
         const infoUser2 = await request(app).get("/users/profile").set('Authorization', `Bearer ${userLogged2.body.token}`)
-
         const response = await request(app).patch(`/users/${infoUser2.body.id}`).set('Authorization', `Bearer ${userLogged1.body.token}`).send(mockedUser)
 
+        expect(response.body).toHaveProperty("message")
         expect(response.status).toBe(401)
+    })
+
+    test("PATCH /users/:id - Should not be able to update email to another user's email", async () => {
+        const createUser1 = await request(app).post("/users").send(mockedUser)
+        await request(app).post("/users").send(mockedUser2)
+        const userLogged1 = await request(app).post("/login").send(mockedUserLogin1)
+
+        const response = await request(app).patch(`/users/${createUser1.body.id}`).set('Authorization', `Bearer ${userLogged1.body.token}`).send(mockedUserUpdate)
+        
+        expect(response.body).toHaveProperty("message")
+        expect(response.status).toBe(409)
     })
 
     test("PATCH /users/:id - Should be able to update user", async () => {
@@ -105,7 +116,8 @@ describe("/users", () => {
         const userLogged1 = await request(app).post("/login").send(mockedUserLogin1)
 
         const deletedUser1 = await request(app).delete(`/users/1`).set('Authorization', `Bearer ${userLogged1.body.token}`)
-
+        
+        expect(deletedUser1.body).toHaveProperty("message")
         expect(deletedUser1.status).toBe(401)
     })
 
@@ -117,7 +129,8 @@ describe("/users", () => {
         const infoUser2 = await request(app).get("/users/profile").set('Authorization', `Bearer ${userLogged2.body.token}`)
 
         const deletedUser1 = await request(app).delete(`/users/${infoUser2.body.id}`).set('Authorization', `Bearer ${userLogged1.body.token}`)
-
+        
+        expect(deletedUser1.body).toHaveProperty("message")
         expect(deletedUser1.status).toBe(401)
     })
 
