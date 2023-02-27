@@ -10,4 +10,5 @@ export default {
     "**/__tests__/**/*.[jt]s?(x)", 
     "**/?(*.)+(spec|test).[jt]s?(x)", 
   ],
+  modulePathIgnorePatterns: ["mocks"]
 };
