@@ -1,5 +1,5 @@
 import { ITaskRequest, ITaskUpdate } from "../../interfaces/tasks.ts";
-import { IUserRequest } from "../../interfaces/users";
+import { IUserRequest, IUserUpdate } from "../../interfaces/users";
 import { IUserLogin } from "../../interfaces/users";
 
 export const mockedUser: IUserRequest = {
@@ -22,6 +22,10 @@ export const mockedUserLogin1: IUserLogin = {
 export const mockedUserLogin2: IUserLogin = {
     email: 'Lucas@mail.com',
     password: '1234'
+}
+
+export const mockedUserUpdate: IUserUpdate = {
+    email: 'Lucas@mail.com'
 }
 
 export const mockedTask1: ITaskRequest = {
