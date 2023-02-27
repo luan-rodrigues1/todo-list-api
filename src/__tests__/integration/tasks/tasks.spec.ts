@@ -62,7 +62,7 @@ describe("/tasks", () => {
         expect(response.status).toBe(401)
     })
 
-    test("GET /tasks - Should be able to list tasks by category", async () => {
+    test("GET /tasks/:category - Should be able to list tasks by category", async () => {
         await request(app).post("/users").send(mockedUser)
         const userLogged1 = await request(app).post("/login").send(mockedUserLogin1)
         const createTask1 = await request(app).post("/tasks").set('Authorization', `Bearer ${userLogged1.body.token}`).send(mockedTask1)
@@ -73,14 +73,14 @@ describe("/tasks", () => {
         expect(response.body).toHaveLength(1)
     })
 
-    test("GET /tasks - Should not be able to list tasks without authentication", async () => {
+    test("GET /tasks/:category - Should not be able to list tasks without authentication", async () => {
         const response = await request(app).get(`/tasks/test`)
 
         expect(response.body).toHaveProperty("message")
         expect(response.status).toBe(401)
     })
 
-    test("GET /tasks - Should not be able to list tasks with non-existent category", async () => {
+    test("GET /tasks/:category - Should not be able to list tasks with non-existent category", async () => {
         await request(app).post("/users").send(mockedUser)
         const userLogged1 = await request(app).post("/login").send(mockedUserLogin1)
         await request(app).post("/tasks").set('Authorization', `Bearer ${userLogged1.body.token}`).send(mockedTask1)
@@ -90,14 +90,14 @@ describe("/tasks", () => {
         expect(response.status).toBe(404)
     })
 
-    test("PATCH /tasks - Should not be able to update task without authentication", async () => {
+    test("PATCH /tasks/:id - Should not be able to update task without authentication", async () => {
         const response = await request(app).patch(`/tasks/1`)
         
         expect(response.body).toHaveProperty("message")
         expect(response.status).toBe(401)
     })
 
-    test("PATCH /tasks - Should not be able to update a task with invalid priority", async () => {
+    test("PATCH /tasks/:id - Should not be able to update a task with invalid priority", async () => {
         await request(app).post("/users").send(mockedUser)
         const userLogged1 = await request(app).post("/login").send(mockedUserLogin1)
         const createTask1 = await request(app).post("/tasks").set('Authorization', `Bearer ${userLogged1.body.token}`).send(mockedTask1)
@@ -107,7 +107,7 @@ describe("/tasks", () => {
         expect(response.status).toBe(401)
     })
 
-    test("PATCH /tasks - Should not be possible for a user to update a task of another", async () => {
+    test("PATCH /tasks/:id - Should not be possible for a user to update a task of another", async () => {
         await request(app).post("/users").send(mockedUser)
         await request(app).post("/users").send(mockedUser2)
         const userLogged1 = await request(app).post("/login").send(mockedUserLogin1)
@@ -119,7 +119,7 @@ describe("/tasks", () => {
         expect(response.status).toBe(401)
     })
 
-    test("PATCH /tasks - Should be able to update a task", async () => {
+    test("PATCH /tasks/:id - Should be able to update a task", async () => {
         await request(app).post("/users").send(mockedUser)
         const userLogged1 = await request(app).post("/login").send(mockedUserLogin1)
         const createTask1 = await request(app).post("/tasks").set('Authorization', `Bearer ${userLogged1.body.token}`).send(mockedTask1)
@@ -135,14 +135,14 @@ describe("/tasks", () => {
         expect(response.status).toBe(200)
     })
 
-    test("DELETE /tasks - Should not be able to delete user without authentication", async () => {
+    test("DELETE /tasks/:id - Should not be able to delete user without authentication", async () => {
         const response = await request(app).delete(`/tasks/1`)
         
         expect(response.body).toHaveProperty("message")
         expect(response.status).toBe(401)
     })
 
-    test("DELETE /tasks - Should not be possible for a user to delete a task of another", async () => {
+    test("DELETE /tasks/:id - Should not be possible for a user to delete a task of another", async () => {
         await request(app).post("/users").send(mockedUser)
         await request(app).post("/users").send(mockedUser2)
         const userLogged1 = await request(app).post("/login").send(mockedUserLogin1)
@@ -154,7 +154,7 @@ describe("/tasks", () => {
         expect(response.status).toBe(401)
     })
 
-    test("DELETE /tasks - Should be able to delete a task", async () => {
+    test("DELETE /tasks/:id - Should be able to delete a task", async () => {
         await request(app).post("/users").send(mockedUser)
         const userLogged1 = await request(app).post("/login").send(mockedUserLogin1)
         const createTask1 = await request(app).post("/tasks").set('Authorization', `Bearer ${userLogged1.body.token}`).send(mockedTask1)
