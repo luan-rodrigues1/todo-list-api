@@ -9,9 +9,16 @@ const updateUserService = async (userId: string, payload: IUserUpdate, loggedId:
         throw new AppError("missing permissions", 401)
     }
     
-    const userRepo = AppDataSource.getRepository(User)
-    
+    const userRepo = AppDataSource.getRepository(User)    
     const searchUser =  await userRepo.findOneBy({ id: userId });
+
+    if(payload.email){
+        const searchEmail =  await userRepo.findOneBy({ email: payload.email });
+
+        if(searchEmail && searchUser?.email !== searchEmail?.email){
+            throw new AppError("A user with this email already exists", 409)
+        }
+    }
 
     const validateIsActive = Object.keys(payload).includes("isActive")
     const validateId = Object.keys(payload).includes("id")
