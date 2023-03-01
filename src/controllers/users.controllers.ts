@@ -18,16 +18,14 @@ const listAllUsersController = async (req: Request, res: Response) => {
 }
 
 const deleteUserController = async (req: Request, res: Response) => {
-    const userId: string = req.params.id
-    const loggedId: string = req.user.id
-    const deleteUserInfo = await deleteUserService(userId, loggedId)
+    const userId: string = req.user.id
+    const deleteUserInfo = await deleteUserService(userId)
     return res.status(204).json(deleteUserInfo)
 }
 
 const updateUserController = async (req: Request, res: Response) => {
-    const userId: string = req.params.id
-    const loggedId: string = req.user.id
-    const deleteUserInfo = await updateUserService(userId, req.body, loggedId)
+    const userId: string = req.user.id
+    const deleteUserInfo = await updateUserService(req.body, userId)
     return res.status(200).json(deleteUserInfo)
 }
 
