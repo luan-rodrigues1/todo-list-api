@@ -91,7 +91,7 @@ describe("/users", () => {
         const response = await request(app).patch(`/users`).set('Authorization', `Bearer ${userLogged1.body.token}`).send(mockedUseUpdateWithInvalidInfo)
         
         expect(response.body).toHaveProperty("message")
-        expect(response.status).toBe(401)
+        expect(response.status).toBe(400)
     })
 
     test("PATCH /users - Should be able to update user", async () => {

@@ -28,7 +28,7 @@ const updateUserService = async (payload: IUserUpdate, userId: string): Promise<
     const validateDeleted = Object.keys(payload).includes("deletedAt")
 
     if(validateId || validateIsActive || validateCreate || validateUpdated || validateDeleted){
-        throw new AppError("It is not possible to change this data", 401)
+        throw new AppError("It is not possible to change this data", 400)
     }
 
     const updateUser = userRepo.create({
