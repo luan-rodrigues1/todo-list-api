@@ -47,8 +47,6 @@ const createTaskService = async (payload: ITaskRequest, userId: string): Promise
         stripUnknown: true
     })
 
-    console.log(newTaskValid)
-
     return newTaskValid
 }
 
