@@ -12,7 +12,8 @@ const loggedUserInfoService = async (userId: string): Promise<IUserLoggedRespons
         },
         relations: {
             tasks: true
-        }
+        },
+        withDeleted: true
     })
 
     const userWithoutPassword = await LoggedWithoutPasswordSchema.validate(searchUser, {

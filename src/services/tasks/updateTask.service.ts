@@ -2,7 +2,7 @@ import AppDataSource from "../../data-source"
 import { Task } from "../../entities/task.entity"
 import { AppError } from "../../errors"
 import { ITaskUpdate } from "../../interfaces/tasks.ts"
-import { updateTaskResponseSchema } from "../../schemas/task.schemas"
+import { TaskResponseSchema } from "../../schemas/task.schemas"
 
 const updateTaskService = async (payload: ITaskUpdate, taskId: string, userId: string): Promise<ITaskUpdate> => {
     const taskRepo = AppDataSource.getRepository(Task)
@@ -45,11 +45,11 @@ const updateTaskService = async (payload: ITaskUpdate, taskId: string, userId: s
     await taskRepo.save(updateTask)
     
 
-    const userWithoutPassword = await updateTaskResponseSchema.validate(updateTask, {
+    const updateTaskValid = await TaskResponseSchema.validate(updateTask, {
         stripUnknown: true
     })
     
-    return userWithoutPassword
+    return updateTaskValid
 }
 
 export default updateTaskService
