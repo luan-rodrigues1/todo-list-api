@@ -24,6 +24,10 @@ export const mockedUserLogin2: IUserLogin = {
     password: '1234'
 }
 
+export const mockedUseUpdateWithInvalidInfo = {
+    "isActive": false
+}
+
 export const mockedUserUpdate: IUserUpdate = {
     email: 'Lucas@mail.com'
 }
