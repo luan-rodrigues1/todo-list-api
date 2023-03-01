@@ -3,6 +3,7 @@ import { Task } from "../../entities/task.entity"
 import { User } from "../../entities/user.entity"
 import { AppError } from "../../errors"
 import { ITask, ITaskRequest } from "../../interfaces/tasks.ts"
+import { TaskResponseSchema } from "../../schemas/task.schemas"
 
 const createTaskService = async (payload: ITaskRequest, userId: string): Promise<ITask| any> => {
     const taskRepo = AppDataSource.getRepository(Task)
@@ -42,7 +43,13 @@ const createTaskService = async (payload: ITaskRequest, userId: string): Promise
         }
     )
 
-    return newTask
+    const newTaskValid = await TaskResponseSchema.validate(newTask, {
+        stripUnknown: true
+    })
+
+    console.log(newTaskValid)
+
+    return newTaskValid
 }
 
 export default createTaskService
