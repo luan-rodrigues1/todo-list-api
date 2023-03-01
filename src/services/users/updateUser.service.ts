@@ -4,16 +4,17 @@ import { AppError } from "../../errors";
 import { IUserResponse, IUserUpdate } from "../../interfaces/users"
 import { userWithoutPasswordSchema } from "../../schemas/user.schemas";
 
-const updateUserService = async (userId: string, payload: IUserUpdate, loggedId: string): Promise<IUserResponse> => {
-    if(userId !== loggedId){
-        throw new AppError("missing permissions", 401)
-    }
-    
+const updateUserService = async (payload: IUserUpdate, userId: string): Promise<IUserResponse> => {
     const userRepo = AppDataSource.getRepository(User)    
     const searchUser =  await userRepo.findOneBy({ id: userId });
 
     if(payload.email){
-        const searchEmail =  await userRepo.findOneBy({ email: payload.email });
+        const searchEmail =  await userRepo.findOne({
+            where: {
+                email: payload.email
+            },
+            withDeleted: true
+        });
 
         if(searchEmail && searchUser?.email !== searchEmail?.email){
             throw new AppError("A user with this email already exists", 409)
