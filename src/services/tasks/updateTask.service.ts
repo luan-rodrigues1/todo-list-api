@@ -9,7 +9,7 @@ const updateTaskService = async (payload: ITaskUpdate, taskId: string, userId: s
 
     if(payload.priority){
         if(payload.priority !== "Alta" && payload.priority !== "Média" && payload.priority !== "Baixa"){
-            throw new AppError("The priority field value is invalid", 401)
+            throw new AppError("The priority field value is invalid", 400)
         }
     }
 
