@@ -84,6 +84,8 @@ yarn typeorm migration:run -d src/data-source.ts
 
 ## 6. Endpoints
 
+[ Voltar para o topo ](#tabela-de-conteúdos)
+
 ### Índice
 
 - [Users](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#cria%C3%A7%C3%A3o-de-usu%C3%A1rio)
