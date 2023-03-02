@@ -1,4 +1,108 @@
 # todo-list-api
+
+Essa API foi desenvolvida com base em nosso Projeto Front-End Kenzinho Vagas que foi pensado para criar uma plataforma que unisse empresas e desenvolvedores, com nosso aprendizado no M4 desenvolvemos essa API para integrar nossa aplicação futuramente.
+
+## Tabela de Conteúdos
+
+- [Visão Geral](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#1-vis%C3%A3o-geral)
+- [Diagrama ER](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#2-diagrama-er)
+- [Comandos](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#3-comandos)
+- [Variáveis de Ambiente](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#4---vari%C3%A1veis-de-ambiente)
+- [Migrations](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#5---migrations)
+- [Endpoints](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#6-endpoints)
+- [Documentação](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#7-documenta%C3%A7%C3%A3o)
+
+---
+
+## 1. Visão Geral
+
+Visão geral do projeto, um pouco das tecnologias usadas.
+
+- [NodeJS](https://nodejs.org/en/)
+- [Express](https://expressjs.com/pt-br/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [TypeORM](https://typeorm.io/)
+- [Yup](https://www.npmjs.com/package/yup)
+- [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken)
+- [bcryptjs](https://www.npmjs.com/package/bcryptjs)
+
+---
+
+## 2. Diagrama ER
+[ Voltar para o topo ](#tabela-de-conteúdos)
+
+
+Diagrama ER da API definindo bem as relações entre as tabelas do banco de dados.
+
+![Design sem nome (15)](https://user-images.githubusercontent.com/106760673/222546175-e95600aa-c130-4f96-a62c-354ff672f435.png)
+
+---
+
+## 3. Comandos
+
+ - Instalando Dependências
+
+Clone o projeto em sua máquina e instale as dependências com o comando:
+
+```shell
+yarn install
+```
+
+- Para rodar a aplicação use o comando:
+
+```shell
+yarn dev
+```
+
+- Para rodar testes use o comando:
+
+```shell
+yarn test
+```
+
+
+## 4 - Variáveis de Ambiente
+
+Em seguida, crie um arquivo **.env**, copiando o formato do arquivo **.env.example**:
+```
+cp .env.example .env
+```
+
+Configure suas variáveis de ambiente com suas credenciais do Postgres e uma nova database da sua escolha.
+
+
+## 5 - Migrations
+
+Execute as migrations com o comando:
+
+```
+yarn typeorm migration:run -d src/data-source.ts
+```
+
+---
+
+## 6. Endpoints
+
+### Índice
+
+- [Users](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#cria%C3%A7%C3%A3o-de-usu%C3%A1rio)
+    - [POST - /users](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#cria%C3%A7%C3%A3o-de-usu%C3%A1rio)
+    - [GET - /users](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#listar-informa%C3%A7%C3%B5es-do-usu%C3%A1rio-logado)
+    - [PATCH - /users](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#atualiza%C3%A7%C3%A3o-de-usu%C3%A1rio)
+    - [DELETE - /users](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#deletar-usu%C3%A1rio)
+- [Login](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#login-de-usu%C3%A1rio)
+    - [POST - /login](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#login-de-usu%C3%A1rio)
+- [Tasks](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#criar-tarefas)
+    - [POST - /tasks](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#criar-tarefas)
+    - [GET - /tasks](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#listar-tarefas-por-categoria)
+    - [PATCH - /tasks](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#atualiza%C3%A7%C3%A3o-de-usu%C3%A1rio)
+    - [DELETE - /tasks](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#deletar-tarefa)
+
+---
+
+## 7. Documentação
+
 ### **Criação de Usuário**
 ### `/users`
 
