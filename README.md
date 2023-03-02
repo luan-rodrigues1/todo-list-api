@@ -1,6 +1,6 @@
 # todo-list-api
 
-Essa API foi desenvolvida com base em nosso Projeto Front-End Kenzinho Vagas que foi pensado para criar uma plataforma que unisse empresas e desenvolvedores, com nosso aprendizado no M4 desenvolvemos essa API para integrar nossa aplicação futuramente.
+API desenvolvida para auxiliar na organização de suas tarefas diárias
 
 ## Tabela de Conteúdos
 
