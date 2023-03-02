@@ -119,6 +119,14 @@ describe("/tasks", () => {
         expect(response.status).toBe(401)
     })
 
+    test("PATCH /tasks/:id - Should not be able to update a task that doesn't exist", async () => {
+        await request(app).post("/users").send(mockedUser)
+        const userLogged1 = await request(app).post("/login").send(mockedUserLogin1)
+        const response = await request(app).patch(`/tasks/$2a$10$a/d09eaaa0-6cdd-4525-9166-a92ec8bc14b0`).set('Authorization', `Bearer ${userLogged1.body.token}`).send(mockedTaskUpdated)
+
+        expect(response.status).toBe(404)
+    })
+
     test("PATCH /tasks/:id - Should be able to update a task", async () => {
         await request(app).post("/users").send(mockedUser)
         const userLogged1 = await request(app).post("/login").send(mockedUserLogin1)
@@ -152,6 +160,14 @@ describe("/tasks", () => {
         
         expect(response.body).toHaveProperty("message")
         expect(response.status).toBe(401)
+    })
+
+    test("DELETE /tasks/:id - Should not be able to delete a task that doesn't exist", async () => {
+        await request(app).post("/users").send(mockedUser)
+        const userLogged1 = await request(app).post("/login").send(mockedUserLogin1)
+        const response = await request(app).delete(`/tasks/d09eaaa0-6cdd-4525-9166-a92ec8bc14b0`).set('Authorization', `Bearer ${userLogged1.body.token}`).send(mockedTaskUpdated)
+        
+        expect(response.status).toBe(404)
     })
 
     test("DELETE /tasks/:id - Should be able to delete a task", async () => {
