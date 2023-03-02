@@ -10,7 +10,7 @@ const createTaskService = async (payload: ITaskRequest, userId: string): Promise
     const userRepo = AppDataSource.getRepository(User)
 
     if(payload.priority !== "Alta" && payload.priority !== "Média" && payload.priority !== "Baixa"){
-        throw new AppError("The priority field value is invalid", 401)
+        throw new AppError("The priority field value is invalid", 400)
     }
 
     const searchUser =  await userRepo.findOne({

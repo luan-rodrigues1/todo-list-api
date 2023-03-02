@@ -59,7 +59,7 @@ describe("/tasks", () => {
         const response = await request(app).post("/tasks").set('Authorization', `Bearer ${userLogged1.body.token}`).send(mockedTaskInvalidPriority)
         
         expect(response.body).toHaveProperty("message")
-        expect(response.status).toBe(401)
+        expect(response.status).toBe(400)
     })
 
     test("GET /tasks/:category - Should be able to list tasks by category", async () => {
@@ -104,7 +104,7 @@ describe("/tasks", () => {
         const response = await request(app).patch(`/tasks/${createTask1.body.id}`).set('Authorization', `Bearer ${userLogged1.body.token}`).send(mockedTaskInvalidPriority)
         
         expect(response.body).toHaveProperty("message")
-        expect(response.status).toBe(401)
+        expect(response.status).toBe(400)
     })
 
     test("PATCH /tasks/:id - Should not be possible for a user to update a task of another", async () => {
