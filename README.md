@@ -353,6 +353,9 @@ Content-type: application/json
 }
 ```
 
+### Observações:
+Só é possível criar uma tarefa com a “priority” Alta, Média ou Baixa, caso seja passado outro tipo de informações a requisição irá retornar erro 400
+
 ### Possíveis Erros:
 | Código do Erro | Descrição |
 |----------------|-----------|
@@ -449,6 +452,10 @@ Content-type: application/json
 	"createdAt": "2023-03-02T16:26:12.783Z"
 }
 ```
+
+### Observações:
+Só é possível criar uma tarefa com a “priority” Alta, Média ou Baixa, caso seja passado outro tipo de informações a requisição irá retornar erro 400
+
 
 ### Possíveis Erros:
 | Código do Erro | Descrição |
