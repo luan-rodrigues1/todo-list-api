@@ -16,6 +16,9 @@ class User {
     @Column()
     password: string
 
+    // @Column({type: "image"})
+    // profilePicture: string
+
     @CreateDateColumn()
     createdAt: Date
 
