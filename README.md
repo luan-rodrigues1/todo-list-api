@@ -4,13 +4,13 @@ API desenvolvida para auxiliar na organização de suas tarefas diárias
 
 ## Tabela de Conteúdos
 
-- [Visão Geral](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#1-vis%C3%A3o-geral)
-- [Diagrama ER](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#2-diagrama-er)
-- [Comandos](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#3-comandos)
-- [Variáveis de Ambiente](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#4---vari%C3%A1veis-de-ambiente)
-- [Migrations](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#5---migrations)
-- [Endpoints](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#6-endpoints)
-- [Documentação](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#7-documenta%C3%A7%C3%A3o)
+- [Visão Geral](#1-vis%C3%A3o-geral)
+- [Diagrama ER](#2-diagrama-er)
+- [Comandos](#3---comandos)
+- [Variáveis de Ambiente](#4---vari%C3%A1veis-de-ambiente)
+- [Migrations](#5---migrations)
+- [Endpoints](#6-endpoints)
+- [Documentação](#7-documenta%C3%A7%C3%A3o)
 
 ---
 
@@ -30,8 +30,6 @@ Visão geral do projeto, um pouco das tecnologias usadas.
 ---
 
 ## 2. Diagrama ER
-[ Voltar para o topo ](#tabela-de-conteúdos)
-
 
 Diagrama ER da API definindo bem as relações entre as tabelas do banco de dados.
 
@@ -39,7 +37,9 @@ Diagrama ER da API definindo bem as relações entre as tabelas do banco de dado
 
 ---
 
-## 3. Comandos
+## 3 - Comandos
+
+[ Voltar para o topo ](#todo-list-api)
 
  - Instalando Dependências
 
@@ -84,22 +84,22 @@ yarn typeorm migration:run -d src/data-source.ts
 
 ## 6. Endpoints
 
-[ Voltar para o topo ](#tabela-de-conteúdos)
+[ Voltar para o topo ](#todo-list-api)
 
 ### Índice
 
-- [Users](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#cria%C3%A7%C3%A3o-de-usu%C3%A1rio)
-    - [POST - /users](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#cria%C3%A7%C3%A3o-de-usu%C3%A1rio)
-    - [GET - /users](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#listar-informa%C3%A7%C3%B5es-do-usu%C3%A1rio-logado)
-    - [PATCH - /users](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#atualiza%C3%A7%C3%A3o-de-usu%C3%A1rio)
-    - [DELETE - /users](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#deletar-usu%C3%A1rio)
-- [Login](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#login-de-usu%C3%A1rio)
-    - [POST - /login](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#login-de-usu%C3%A1rio)
-- [Tasks](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#criar-tarefas)
-    - [POST - /tasks](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#criar-tarefas)
-    - [GET - /tasks](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#listar-tarefas-por-categoria)
-    - [PATCH - /tasks](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#atualiza%C3%A7%C3%A3o-de-usu%C3%A1rio)
-    - [DELETE - /tasks](https://github.com/luan-rodrigues1/todo-list-api/edit/main/README.md#deletar-tarefa)
+- [Users](#cria%C3%A7%C3%A3o-de-usu%C3%A1rio)
+    - [POST - /users](#cria%C3%A7%C3%A3o-de-usu%C3%A1rio)
+    - [GET - /users](#listar-informa%C3%A7%C3%B5es-do-usu%C3%A1rio-logado)
+    - [PATCH - /users](#atualiza%C3%A7%C3%A3o-de-usu%C3%A1rio)
+    - [DELETE - /users](#deletar-usu%C3%A1rio)
+- [Login](#login-de-usu%C3%A1rio)
+    - [POST - /login](#login-de-usu%C3%A1rio)
+- [Tasks](#criar-tarefas)
+    - [POST - /tasks](#criar-tarefas)
+    - [GET - /tasks](#listar-tarefas-por-categoria)
+    - [PATCH - /tasks](#atualiza%C3%A7%C3%A3o-de-usu%C3%A1rio)
+    - [DELETE - /tasks](#deletar-tarefa)
 
 ---
 
