@@ -15,6 +15,6 @@ userRoutes.post("", ensureDetalsValidMiddleware(createUserSchema), createdUserCo
 userRoutes.get("", ensureAuthMiddleware, loggedUserInfoController)
 userRoutes.delete("", ensureAuthMiddleware, deleteUserController)
 userRoutes.patch("", ensureAuthMiddleware, ensureDetalsValidMiddleware(updateUserSchema), updateUserController)
-userRoutes.patch("/upload", upload.single('avatar'), uploadImageUserController)
+userRoutes.patch("/upload", ensureAuthMiddleware, upload.single('avatar'), uploadImageUserController)
 
 export default userRoutes

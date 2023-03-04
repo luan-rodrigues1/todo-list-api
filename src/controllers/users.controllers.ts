@@ -31,7 +31,8 @@ const loggedUserInfoController = async (req: Request, res: Response) => {
 }
 
 const uploadImageUserController = async (req: Request, res: Response) => {
-    const uploadImage = await uploadImageUserService(req.file)
+    const userId: string = req.user.id
+    const uploadImage = await uploadImageUserService(req.file, userId)
     return res.status(200).json(uploadImage)
 }
 

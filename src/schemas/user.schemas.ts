@@ -24,6 +24,7 @@ const LoggedWithoutPasswordSchema: yup.Schema<IUserLoggedResponse> =  yup.object
     email: yup.string().email().required(),
     name: yup.string().required(),
     id: yup.string().required(),
+    profilePicture: yup.string().required()
 })
 
 const updateUserSchema: yup.Schema<IUserUpdate | any> = yup.object().shape({

@@ -23,7 +23,7 @@ const TaskResponseSchema: yup.Schema<ITask> = yup.object().shape({
     category: yup.string().required(),
     priority: yup.string().required(),
     description: yup.string().required(),
-    name: yup.string().required(),
+    name: yup.string().required()
 })
 
 

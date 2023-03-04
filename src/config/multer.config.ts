@@ -1,10 +1,8 @@
 import multer from "multer"
 import path from "path"
-import { AppError } from "../errors"
 
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
-        console.log(file)
         callback(null, path.resolve(__dirname ,'..', 'uploads'))
     },
     filename: (req, file, callback) => {

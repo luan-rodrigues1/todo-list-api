@@ -23,6 +23,7 @@ export interface IUserLoggedResponse {
     createdAt: Date
     updatedAt: Date
     isActive: boolean
+    profilePicture: string
     tasks: ITask[]
 }
 
