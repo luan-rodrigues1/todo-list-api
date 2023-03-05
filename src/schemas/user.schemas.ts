@@ -8,6 +8,7 @@ const createUserSchema: yup.Schema<IUserRequest> = yup.object().shape({
 })
 
 const userWithoutPasswordSchema: yup.Schema<IUserResponse> =  yup.object().shape({
+    profilePicture: yup.string().required(),
     isActive: yup.boolean().required(),
     updatedAt: yup.date().required(),
     createdAt: yup.date().required(),
@@ -18,13 +19,13 @@ const userWithoutPasswordSchema: yup.Schema<IUserResponse> =  yup.object().shape
 
 const LoggedWithoutPasswordSchema: yup.Schema<IUserLoggedResponse> =  yup.object().shape({
     tasks: yup.array().required(),
+    profilePicture: yup.string().required(),
     isActive: yup.boolean().required(),
     updatedAt: yup.date().required(),
     createdAt: yup.date().required(),
     email: yup.string().email().required(),
     name: yup.string().required(),
-    id: yup.string().required(),
-    profilePicture: yup.string().required()
+    id: yup.string().required()
 })
 
 const updateUserSchema: yup.Schema<IUserUpdate | any> = yup.object().shape({
