@@ -3,10 +3,8 @@ import AppDataSource from "../../data-source";
 import { AppError } from "../../errors"
 
 const uploadImageUserService = async (image: Express.Multer.File | undefined, userId: string) => {
-    console.log("checgou aqui")
-    console.log(image)
     if(!image) {
-        throw new AppError("Invalid file type or non-existent file", 400)
+        throw new AppError("No files have been uploaded", 400)
     } 
 
     const userRepo = AppDataSource.getRepository(User)    
