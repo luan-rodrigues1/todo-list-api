@@ -2,6 +2,6 @@ node_modules/
 dist/
 yarn.lock
 .env
-node_modules/.jpeg
-node_modules/.pjpeg
-node_modules/.png
+uploads/.jpeg
+uploads/.pjpeg
+uploads/.png
