@@ -22,7 +22,6 @@ const createUserService = async (payload: IUserRequest): Promise<IUserResponse> 
     const user = userRepo.create(payload)
     await userRepo.save(user)
 
-
     const userWithoutPassword = await userWithoutPasswordSchema.validate(user, {
         stripUnknown: true
     })
