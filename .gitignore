@@ -2,5 +2,6 @@ node_modules/
 dist/
 yarn.lock
 .env
-uploads/*
-!uploads/.gitkeep
+*.jpeg
+*.pjpeg
+*.png
