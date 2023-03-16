@@ -8,7 +8,6 @@ import {storage, fileFilter} from "../config/multer.config"
 
 
 const upload = multer({storage: storage, fileFilter: fileFilter})
-// const upload = require("../config/multer.config")
 const userRoutes = Router()
 
 userRoutes.post("", ensureDetalsValidMiddleware(createUserSchema), createdUserController)
