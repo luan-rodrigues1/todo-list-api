@@ -1,6 +1,7 @@
 import { User } from "../../entities/user.entity";
 import AppDataSource from "../../data-source";
 import { AppError } from "../../errors"
+import { userWithoutPasswordSchema } from "../../schemas/user.schemas";
 
 const uploadImageUserService = async (image: Express.Multer.File | undefined, userId: string) => {
     if(!image) {
@@ -20,8 +21,12 @@ const uploadImageUserService = async (image: Express.Multer.File | undefined, us
     })
 
     await userRepo.save(updateUser)
-    
-    return updateUser
+
+    const updatedUserWithoutPassword = await userWithoutPasswordSchema.validate(updateUser, {
+        stripUnknown: true
+    })
+
+    return updatedUserWithoutPassword
 
 }
 
