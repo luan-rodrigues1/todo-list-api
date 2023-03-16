@@ -2,4 +2,6 @@ node_modules/
 dist/
 yarn.lock
 .env
-uploads/
+*.jpeg
+*.pjpeg
+*.png
