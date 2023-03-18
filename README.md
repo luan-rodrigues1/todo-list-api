@@ -26,6 +26,7 @@ Visão geral do projeto, um pouco das tecnologias usadas.
 - [Yup](https://www.npmjs.com/package/yup)
 - [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken)
 - [bcryptjs](https://www.npmjs.com/package/bcryptjs)
+- [Multer](https://github.com/expressjs/multer)
 
 ---
 
@@ -33,7 +34,7 @@ Visão geral do projeto, um pouco das tecnologias usadas.
 
 Diagrama ER da API definindo bem as relações entre as tabelas do banco de dados.
 
-![Design sem nome (15)](https://user-images.githubusercontent.com/106760673/222546175-e95600aa-c130-4f96-a62c-354ff672f435.png)
+![Design sem nome (16)](https://user-images.githubusercontent.com/106760673/226105487-5e4989f7-c3f7-4f8d-8dd2-027cc1898dfd.png)
 
 ---
 
@@ -134,9 +135,10 @@ Content-type: application/json
 	"id": "d09eaaa0-6cdd-4525-9166-a92ec8bc14b0",
 	"name": "Luan rodrigues",
 	"email": "luanRodrigues@mail.com",
-	"createdAt": "2023-03-01T17:46:59.408Z",
-	"updatedAt": "2023-03-01T17:46:59.408Z",
-	"isActive": true
+	"createdAt": "2023-03-18T12:23:36.456Z",
+	"updatedAt": "2023-03-18T12:23:36.456Z",
+	"isActive": true,
+	"profilePicture": "no profile picture"
 }
 ```
 
@@ -172,9 +174,10 @@ Vazio
 	"id": "d09eaaa0-6cdd-4525-9166-a92ec8bc14b0",
 	"name": "Luan rodrigues",
 	"email": "luanRodrigues@mail.com",
-	"createdAt": "2023-03-01T17:46:59.408Z",
-	"updatedAt": "2023-03-01T17:46:59.408Z",
+	"createdAt": "2023-03-18T12:23:36.456Z",
+	"updatedAt": "2023-03-18T12:23:36.456Z",
 	"isActive": true,
+	"profilePicture": "no profile picture",
 	"tasks": [
 		{
 			"id": "3bde1e03-eb86-4434-9e94-0832688b44fa",
@@ -233,10 +236,11 @@ Content-type: application/json
 {
 	"id": "d09eaaa0-6cdd-4525-9166-a92ec8bc14b0",
 	"name": "Luan rodrigues carlos",
-	"email": "luanRodriguesCarlos@mail.com",
-	"createdAt": "2023-03-01T17:46:59.408Z",
-	"updatedAt": "2023-03-01T18:28:32.997Z",
-	"isActive": true
+	"email": "luanRodrigues@mail.com",
+	"createdAt": "2023-03-18T12:23:36.456Z",
+	"updatedAt": "2023-03-18T12:27:44.928Z",
+	"isActive": true,
+	"profilePicture": "no profile picture"
 }
 ```
 
@@ -276,6 +280,49 @@ Nenhuma informação é retornada nessa requisição
 ### Possíveis Erros:
 | Código do Erro | Descrição |
 |----------------|-----------|
+| 401 Unauthorized   | Invalid Token |
+
+---
+
+### **Atualização da foto de perfil**
+### `/users`
+
+### Exemplo de Request:
+```
+PATCH /users/upload
+Authorization: Bearer {token}
+Content-type: Multipart Form
+```
+
+### Corpo da Requisição:
+```Multipart Form
+avatar: <Arquivo de imagem>
+```
+
+### Exemplo de Response:
+```
+200 OK
+```
+
+```json
+{
+	"id": "d09eaaa0-6cdd-4525-9166-a92ec8bc14b0",
+	"name": "Luan rodrigues carlos",
+	"email": "luanRodrigues@mail.com",
+	"createdAt": "2023-03-18T12:23:36.456Z",
+	"updatedAt": "2023-03-18T12:27:44.928Z",
+	"isActive": true,
+	"profilePicture": "1679010319842_nomedoarquivo.jpeg"
+}
+```
+### Observações:
+Só é possível enviar arquivo de imagem do tipo jpeg, pjpeg e png, caso seja passado outro tipo de arquivo a requisição irá retornar erro 400
+
+### Possíveis Erros:
+| Código do Erro | Descrição |
+|----------------|-----------|
+| 400 Bad Request   | Invalid file type |
+| 400 Bad Request   | No files have been uploaded |
 | 401 Unauthorized   | Invalid Token |
 
 ---
