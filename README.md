@@ -94,6 +94,7 @@ yarn typeorm migration:run -d src/data-source.ts
     - [GET - /users](#listar-informa%C3%A7%C3%B5es-do-usu%C3%A1rio-logado)
     - [PATCH - /users](#atualiza%C3%A7%C3%A3o-de-usu%C3%A1rio)
     - [DELETE - /users](#deletar-usu%C3%A1rio)
+    - [PATCH - /users/upload](#atualiza%C3%A7%C3%A3o-da-foto-de-perfil)
 - [Login](#login-de-usu%C3%A1rio)
     - [POST - /login](#login-de-usu%C3%A1rio)
 - [Tasks](#criar-tarefas)
@@ -285,7 +286,7 @@ Nenhuma informação é retornada nessa requisição
 ---
 
 ### **Atualização da foto de perfil**
-### `/users`
+### `/users/upload`
 
 ### Exemplo de Request:
 ```
