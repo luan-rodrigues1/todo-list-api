@@ -3,20 +3,44 @@ import { Task } from "../../entities/task.entity"
 import { User } from "../../entities/user.entity"
 import { AppError } from "../../errors"
 
-const listTasksCategoryService = async (categoryName: string, userId: string) => {
+const listTasksService = async (queryFilter: any, userId: string) => {
     const taskRepo = AppDataSource.getRepository(Task)
 
-    const existingCategory = await taskRepo.createQueryBuilder('tasks')
-        .where('tasks.user = :user_id_tasks', { user_id_tasks: userId })
-        .andWhere(`LOWER(REPLACE(tasks.category, ' ','')) = :category_tasks`, { category_tasks: `${categoryName.replace(/\s/g, '').toLowerCase()}`})
-    .getMany()
+    let query = taskRepo.createQueryBuilder('contact')
+    .where('contact.user.id = :userIdLogged', { userIdLogged: userId })
 
-    if(!existingCategory[0]) {
-        throw new AppError("category not found", 404)
+    if (queryFilter.category && queryFilter.name) {
+        const searchParamCategory = queryFilter.category.toLowerCase().replace(/\s+/g, '')
+        const searchParamName = queryFilter.name.toLowerCase().replace(/\s+/g, '')
+
+        query = query.andWhere(
+            `LOWER(REPLACE(contact.category, ' ','')) = :searchParamCategory`,
+            { searchParamCategory }
+        )
+        .andWhere(
+            `LOWER(REPLACE(contact.name, ' ','')) LIKE :searchParamName`,
+            { searchParamName: `%${searchParamName}%` }
+        )
+    } else if (queryFilter.category) {
+        const searchParam = queryFilter.category.toLowerCase().replace(/\s+/g, '')
+
+        query = query.andWhere(
+            `LOWER(REPLACE(contact.category, ' ','')) = :searchParam`,
+            { searchParam }
+        )
+    } else if (queryFilter.name) {
+        const searchParam = queryFilter.name.toLowerCase().replace(/\s+/g, '')
+
+        query = query.andWhere(
+            `LOWER(REPLACE(contact.name, ' ','')) LIKE :searchParam`,
+            { searchParam: `%${searchParam}%` }
+        )
     }
 
-    return existingCategory
+    const listContact = await query.getMany()
 
+    return listContact
     
 }
-export default listTasksCategoryService
+
+export default listTasksService
