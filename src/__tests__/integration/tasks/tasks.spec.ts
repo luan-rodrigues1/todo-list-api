@@ -62,32 +62,22 @@ describe("/tasks", () => {
         expect(response.status).toBe(400)
     })
 
-    test("GET /tasks/:category - Should be able to list tasks by category", async () => {
+    test("GET /tasks/:category - Should be able to list all tasks for a user", async () => {
         await request(app).post("/users").send(mockedUser)
         const userLogged1 = await request(app).post("/login").send(mockedUserLogin1)
         const createTask1 = await request(app).post("/tasks").set('Authorization', `Bearer ${userLogged1.body.token}`).send(mockedTask1)
         await request(app).post("/tasks").set('Authorization', `Bearer ${userLogged1.body.token}`).send(mockedTask2)
-        const response = await request(app).get(`/tasks/${createTask1.body.category}`).set('Authorization', `Bearer ${userLogged1.body.token}`)
+        const response = await request(app).get(`/tasks`).set('Authorization', `Bearer ${userLogged1.body.token}`)
         
         expect(response.status).toBe(200)
-        expect(response.body).toHaveLength(1)
+        expect(response.body).toHaveLength(2)
     })
 
     test("GET /tasks/:category - Should not be able to list tasks without authentication", async () => {
-        const response = await request(app).get(`/tasks/test`)
+        const response = await request(app).get(`/tasks`)
 
         expect(response.body).toHaveProperty("message")
         expect(response.status).toBe(401)
-    })
-
-    test("GET /tasks/:category - Should not be able to list tasks with non-existent category", async () => {
-        await request(app).post("/users").send(mockedUser)
-        const userLogged1 = await request(app).post("/login").send(mockedUserLogin1)
-        await request(app).post("/tasks").set('Authorization', `Bearer ${userLogged1.body.token}`).send(mockedTask1)
-        const response = await request(app).get(`/tasks/test`).set('Authorization', `Bearer ${userLogged1.body.token}`)
-
-        expect(response.body).toHaveProperty("message")
-        expect(response.status).toBe(404)
     })
 
     test("PATCH /tasks/:id - Should not be able to update task without authentication", async () => {
