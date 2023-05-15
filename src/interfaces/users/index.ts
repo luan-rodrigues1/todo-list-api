@@ -14,7 +14,7 @@ export interface IUserResponse {
     createdAt: Date
     updatedAt: Date
     isActive: boolean
-    profilePicture: string 
+    profilePicture: string | null | undefined 
 }
 
 export interface IUserLoggedResponse {

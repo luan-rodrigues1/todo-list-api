@@ -16,8 +16,8 @@ class User {
     @Column()
     password: string
 
-    @Column({default: "no profile picture"})
-    profilePicture: string
+    @Column({type: "varchar", nullable: true})
+    profilePicture?: string | undefined | null
 
     @CreateDateColumn()
     createdAt: Date

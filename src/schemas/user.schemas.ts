@@ -7,8 +7,8 @@ const createUserSchema: yup.Schema<IUserRequest> = yup.object().shape({
     password: yup.string().required()
 })
 
-const userWithoutPasswordSchema: yup.Schema<IUserResponse> =  yup.object().shape({
-    profilePicture: yup.string().required(),
+const userWithoutPasswordSchema: yup.Schema<IUserResponse | any> =  yup.object().shape({
+    profilePicture: yup.string().nullable(),
     isActive: yup.boolean().required(),
     updatedAt: yup.date().required(),
     createdAt: yup.date().required(),
