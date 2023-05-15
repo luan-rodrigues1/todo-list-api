@@ -26,8 +26,9 @@ const updateUserService = async (payload: IUserUpdate, userId: string): Promise<
     const validateCreate= Object.keys(payload).includes("createdAt")
     const validateUpdated= Object.keys(payload).includes("updatedAt")
     const validateDeleted = Object.keys(payload).includes("deletedAt")
+    const validatePassword = Object.keys(payload).includes("password")
 
-    if(validateId || validateIsActive || validateCreate || validateUpdated || validateDeleted){
+    if(validateId || validateIsActive || validateCreate || validateUpdated || validateDeleted || validatePassword){
         throw new AppError("It is not possible to change this data", 400)
     }
 

@@ -34,7 +34,6 @@ class User {
     @OneToMany(() => Task, task => task.user)
     tasks: Task[]
 
-    @BeforeUpdate()
     @BeforeInsert()
     hasPassword(){
         this.password = hashSync(this.password, 10)
