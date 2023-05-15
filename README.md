@@ -99,7 +99,7 @@ yarn typeorm migration:run -d src/data-source.ts
     - [POST - /login](#login-de-usu%C3%A1rio)
 - [Tasks](#criar-tarefas)
     - [POST - /tasks](#criar-tarefas)
-    - [GET - /tasks/:category_name](#listar-tarefas-por-categoria)
+    - [GET - /tasks](#listar-tarefas)
     - [PATCH - /tasks/:user_id](#atualiza%C3%A7%C3%A3o-de-usu%C3%A1rio)
     - [DELETE - /tasks/:user_id](#deletar-tarefa)
 
