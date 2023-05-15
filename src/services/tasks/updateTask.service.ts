@@ -1,10 +1,10 @@
 import AppDataSource from "../../data-source"
 import { Task } from "../../entities/task.entity"
 import { AppError } from "../../errors"
-import { ITaskUpdate } from "../../interfaces/tasks.ts"
+import { ITask, ITaskUpdate } from "../../interfaces/tasks.ts"
 import { TaskResponseSchema } from "../../schemas/task.schemas"
 
-const updateTaskService = async (payload: ITaskUpdate, taskId: string, userId: string): Promise<ITaskUpdate> => {
+const updateTaskService = async (payload: ITaskUpdate, taskId: string, userId: string): Promise<ITask> => {
     const taskRepo = AppDataSource.getRepository(Task)
 
     if(payload.priority){

@@ -8,7 +8,7 @@ export interface ITask {
     id: string
     name: string
     priority: string
-    description?: string
+    description?: string | null | undefined
     category: string
     completed: boolean
     createdAt: Date
@@ -21,7 +21,3 @@ export interface ITaskUpdate {
     category?: string
     completed?: boolean
 }
-
-
-
-

@@ -1,5 +1,4 @@
 import { Request, Response } from "express" 
-import { SimpleConsoleLogger } from "typeorm"
 import { IUserLogin } from "../interfaces/users"
 import createSessionService from "../services/session/createSession.service"
 

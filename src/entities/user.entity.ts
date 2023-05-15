@@ -16,8 +16,8 @@ class User {
     @Column()
     password: string
 
-    @Column({default: "no profile picture"})
-    profilePicture: string
+    @Column({type: "varchar", nullable: true})
+    profilePicture?: string | undefined | null
 
     @CreateDateColumn()
     createdAt: Date
@@ -34,7 +34,6 @@ class User {
     @OneToMany(() => Task, task => task.user)
     tasks: Task[]
 
-    @BeforeUpdate()
     @BeforeInsert()
     hasPassword(){
         this.password = hashSync(this.password, 10)

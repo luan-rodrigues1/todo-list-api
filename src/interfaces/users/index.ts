@@ -6,7 +6,6 @@ export interface IUserRequest {
     password: string
 }
 
-
 export interface IUserResponse {
     id: string
     name: string
@@ -14,31 +13,26 @@ export interface IUserResponse {
     createdAt: Date
     updatedAt: Date
     isActive: boolean
-    profilePicture: string 
-}
-
-export interface IUserLoggedResponse {
-    id: string
-    name: string
-    email: string
-    createdAt: Date
-    updatedAt: Date
-    isActive: boolean
-    profilePicture: string 
-    tasks: ITask[]
-}
-
-export interface IUserUpdate {    
-    name?: string 
-    email?: string 
-    password?: string 
-    isActive?: boolean
-    id?: string
-    createdAt?: Date
-    updatedAt?: Date
+    profilePicture: string | null | undefined 
 }
 
 export interface IUserLogin {
     email: string
     password: string
+}
+
+export interface IUserLoggedResponse {
+    id: string;
+    name: string;
+    email: string;
+    createdAt: Date;
+    updatedAt: Date;
+    isActive: boolean;
+    profilePicture: string | null | undefined;
+    tasks: ITask[];
+}
+
+export interface IUserUpdate {    
+    name?: string;
+    email?: string;
 }
