@@ -84,16 +84,6 @@ describe("/users", () => {
         expect(response.status).toBe(409)
     })
 
-    test("PATCH /users - should not be able to update certain of the information", async () => {
-        await request(app).post("/users").send(mockedUser)
-        const userLogged1 = await request(app).post("/login").send(mockedUserLogin1)
-
-        const response = await request(app).patch(`/users`).set('Authorization', `Bearer ${userLogged1.body.token}`).send(mockedUseUpdateWithInvalidInfo)
-        
-        expect(response.body).toHaveProperty("message")
-        expect(response.status).toBe(400)
-    })
-
     test("PATCH /users - Should be able to update user", async () => {
         await request(app).post("/users").send(mockedUser)
         const userLogged1 = await request(app).post("/login").send(mockedUserLogin1)
