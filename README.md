@@ -224,7 +224,6 @@ Content-type: application/json
 {
 	"name": "Luan rodrigues carlos",
 	"email": "luanRodrigues@mail.com",
-	"password": "123456"
 }
 ```
 
@@ -245,12 +244,14 @@ Content-type: application/json
 }
 ```
 
+### Observações:
+Só é possível alterar o nome e email do usuário, caso seja passado qualquer outro campo será ignorado pela requisição
+
 ### Possíveis Erros:
 | Código do Erro | Descrição |
 |----------------|-----------|
 | 400 Bad Request   | It is not possible to change this data |
 | 401 Unauthorized   | Invalid Token |
-| 409 Conflict   | A user with this email already exists |
 
 ---
 
@@ -412,12 +413,12 @@ Só é possível criar uma tarefa com a “priority” Alta, Média ou Baixa, ca
 
 ---
 
-### **Listar tarefas por categoria**
-### `/tasks/{Nome da categoria}`
+### **Listar tarefas**
+### `/tasks`
 
 ### Exemplo de Request:
 ```
-GET /tasks/estudo
+GET /tasks
 Authorization: Bearer {token}
 Content-type: application/json
 ```
@@ -455,11 +456,13 @@ Vazio
 ]
 ```
 
+### Observações:
+Nessa rota é possível utilizar Query Params para filtrar a listagem das tarefas de um usuário como por exemplo “/tasks?category=estudo”, “/tasks?name=native”, “/tasks?category=estudo&name=node”
+
 ### Possíveis Erros:
 | Código do Erro | Descrição |
 |----------------|-----------|
 | 401 Unauthorized   | Invalid Token |
-| 404 Not Found   | category not found |
 
 ---
 
