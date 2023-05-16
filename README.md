@@ -1,6 +1,6 @@
 # todo-list-api
 
-API desenvolvida para auxiliar na organização de suas tarefas diárias
+API desenvolvida com o intuito de auxiliar os usuários a se organizarem, fornecendo recursos de criação, atualização e exclusão de tarefas. Ela é construída utilizando tecnologias como Node.js, Express, TypeScript, PostgreSQL, TypeORM, Yup, jsonwebtoken, bcryptjs, Multer, Jest e Supertest para garantir um desenvolvimento eficiente, seguro e testado.
 
 ## Tabela de Conteúdos
 
