@@ -139,7 +139,7 @@ Content-type: application/json
 	"createdAt": "2023-03-18T12:23:36.456Z",
 	"updatedAt": "2023-03-18T12:23:36.456Z",
 	"isActive": true,
-	"profilePicture": "no profile picture"
+	"profilePicture": null
 }
 ```
 
@@ -178,7 +178,7 @@ Vazio
 	"createdAt": "2023-03-18T12:23:36.456Z",
 	"updatedAt": "2023-03-18T12:23:36.456Z",
 	"isActive": true,
-	"profilePicture": "no profile picture",
+	"profilePicture": null,
 	"tasks": [
 		{
 			"id": "3bde1e03-eb86-4434-9e94-0832688b44fa",
@@ -240,7 +240,7 @@ Content-type: application/json
 	"createdAt": "2023-03-18T12:23:36.456Z",
 	"updatedAt": "2023-03-18T12:27:44.928Z",
 	"isActive": true,
-	"profilePicture": "no profile picture"
+	"profilePicture": null
 }
 ```
 
