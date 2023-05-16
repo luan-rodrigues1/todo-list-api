@@ -27,6 +27,8 @@ Visão geral do projeto, um pouco das tecnologias usadas.
 - [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken)
 - [bcryptjs](https://www.npmjs.com/package/bcryptjs)
 - [Multer](https://github.com/expressjs/multer)
+- [Jest](https://github.com/jestjs/jest)
+- [Supertest](https://github.com/ladjs/supertest)
 
 ---
 
